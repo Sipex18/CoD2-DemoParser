@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g", // Enable debugging information
+                "-m32",
+                "-static",
+                "-Wno-write-strings",
+                "-D", "COD_VERSION=COD2_1_3",
+                "src/main.cpp",
+                "-o",
+                "bin/cod2demo.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Generated task by Debugger."
+        }
+    ]
+}
