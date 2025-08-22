@@ -2285,6 +2285,37 @@ typedef struct
 	short pelvis;
 } stringIndex_t;
 
+
+typedef struct clientInfo_s
+{
+	int infoValid;
+	int nextValid;
+	int clientNum;
+	char name[32];
+	int team;
+	int oldteam;
+	int score;
+	int location;
+	int health;
+	char model[64];
+	char attachModelNames[6][64];
+	char attachTagNames[6][64];
+	//lerpFrame_t legs;
+	//lerpFrame_t torso;
+	float lerpMoveDir;
+	float lerpLean;
+	vec3_t playerAngles;
+	int leftHandGun;
+	int dobjDirty;
+	//clientControllers_t control;
+	//int clientConditions[NUM_ANIM_CONDITIONS][2];
+	XAnimTree_s *pXAnimTree;
+	int iDObjWeapon;
+	int stanceTransitionTime;
+	int turnAnimEndTime;
+	char turnAnimType;
+} clientInfo_t;
+
 struct bgs_s
 {
 	byte animScriptData[0xB3BC8u];
@@ -2297,8 +2328,8 @@ struct bgs_s
 	int frametime;
 	float angle;
 	struct XModel *(*GetXModel)(const char *);
-	void (*CreateDObj)(struct DObjModel_s *, u_int16_t, struct XAnimTree_s *, int, int, struct clientInfo_t *);
-	u_int16_t (*AttachWeapon)(struct DObjModel_s *, u_int16_t, struct clientInfo_t *);
+	void (*CreateDObj)(struct DObjModel_s *, u_int16_t, struct XAnimTree_s *, int, int, clientInfo_t *);
+	u_int16_t (*AttachWeapon)(struct DObjModel_s *, u_int16_t, clientInfo_t *);
 	struct DObj_s *(*GetDObj)(int, int);
 	void *(*AllocXAnim)(int);
 };
@@ -3358,15 +3389,298 @@ clientActive_t cl;
 
 
 
+#define MAX_PREDICTED_EVENTS	16
+ 
+typedef struct {
+	int			clientFrame;		// incremented each frame
+
+	int			clientNum;
+	
+	qboolean	demoPlayback;
+	qboolean	levelShot;			// taking a level menu screenshot
+	int			deferredPlayerLoading;
+	qboolean	loading;			// don't defer players at initial startup
+	qboolean	intermissionStarted;	// don't play voice rewards, because game will end shortly
+
+	// there are only one or two snapshot_t that are relevent at a time
+	int			latestSnapshotNum;	// the number of snapshots the client system has received
+	int			latestSnapshotTime;	// the time from latestSnapshotNum, so we don't need to read the snapshot yet
+
+	snapshot_t	*snap;				// cg.snap->serverTime <= cg.time
+	snapshot_t	*nextSnap;			// cg.nextSnap->serverTime > cg.time, or NULL
+	snapshot_t	activeSnapshots[2];
+
+	float		frameInterpolation;	// (float)( cg.time - cg.frame->serverTime ) / (cg.nextFrame->serverTime - cg.frame->serverTime)
+
+	qboolean	thisFrameTeleport;
+	qboolean	nextFrameTeleport;
+
+	int			frametime;		// cg.time - cg.oldTime
+
+	int			time;			// this is the time value that the client
+								// is rendering at.
+	int			oldTime;		// time at last frame, used for missile trails and prediction checking
+
+	int			physicsTime;	// either cg.snap->time or cg.nextSnap->time
+
+	int			timelimitWarnings;	// 5 min, 1 min, overtime
+	int			fraglimitWarnings;
+
+	qboolean	mapRestart;			// set on a map restart to set back the weapon
+
+	qboolean	renderingThirdPerson;		// during deaths, chasecams, etc
+
+	// prediction state
+	qboolean	hyperspace;				// true if prediction has hit a trigger_teleport
+	playerState_t	predictedPlayerState;
+	//centity_t		predictedPlayerEntity;
+	qboolean	validPPS;				// clear until the first call to CG_PredictPlayerState
+	int			predictedErrorTime;
+	vec3_t		predictedError;
+
+	int			eventSequence;
+	int			predictableEvents[MAX_PREDICTED_EVENTS];
+
+	float		stepChange;				// for stair up smoothing
+	int			stepTime;
+
+	float		duckChange;				// for duck viewheight smoothing
+	int			duckTime;
+
+	float		landChange;				// for landing hard
+	int			landTime;
+
+	// input state sent to server
+	int			weaponSelect;
+
+	// auto rotating items
+	vec3_t		autoAngles;
+	vec3_t		autoAxis[3];
+	vec3_t		autoAnglesFast;
+	vec3_t		autoAxisFast[3];
+
+	// view rendering
+	//refdef_t	refdef;
+	vec3_t		refdefViewAngles;		// will be converted to refdef.viewaxis
+
+	// zoom key
+	qboolean	zoomed;
+	int			zoomTime;
+	float		zoomSensitivity;
+
+	// information screen text during loading
+	char		infoScreenText[MAX_STRING_CHARS];
+
+	// scoreboard
+	int			scoresRequestTime;
+	int			numScores;
+	int			selectedScore;
+	int			teamScores[2];
+	//score_t		scores[MAX_CLIENTS];
+	qboolean	showScores;
+	qboolean	scoreBoardShowing;
+	int			scoreFadeTime;
+	//char		killerName[MAX_NAME_LENGTH];
+	char			spectatorList[MAX_STRING_CHARS];		// list of names
+	int				spectatorLen;												// length of list
+	float			spectatorWidth;											// width in device units
+	int				spectatorTime;											// next time to offset
+	int				spectatorPaintX;										// current paint x
+	int				spectatorPaintX2;										// current paint x
+	int				spectatorOffset;										// current offset from start
+	int				spectatorPaintLen; 									// current offset from start
+
+	// skull trails
+	//skulltrail_t	skulltrails[MAX_CLIENTS];
+
+	// centerprinting
+	int			centerPrintTime;
+	int			centerPrintCharWidth;
+	int			centerPrintY;
+	char		centerPrint[1024];
+	int			centerPrintLines;
+
+	// low ammo warning state
+	int			lowAmmoWarning;		// 1 = low, 2 = empty
+
+	// kill timers for carnage reward
+	int			lastKillTime;
+
+	// crosshair client ID
+	int			crosshairClientNum;
+	int			crosshairClientTime;
+
+	// powerup active flashing
+	int			powerupActive;
+	int			powerupTime;
+
+	// attacking player
+	int			attackerTime;
+	int			voiceTime;
+
+	// reward medals
+	int			rewardStack;
+	int			rewardTime;
+	//int			rewardCount[MAX_REWARDSTACK];
+	//qhandle_t	rewardShader[MAX_REWARDSTACK];
+	//qhandle_t	rewardSound[MAX_REWARDSTACK];
+
+	// sound buffer mainly for announcer sounds
+	int			soundBufferIn;
+	int			soundBufferOut;
+	int			soundTime;
+	//qhandle_t	soundBuffer[MAX_SOUNDBUFFER];
+
+	// for voice chat buffer
+	int			voiceChatTime;
+	int			voiceChatBufferIn;
+	int			voiceChatBufferOut;
+
+	// warmup countdown
+	int			warmup;
+	int			warmupCount;
+
+	//==========================
+
+	int			itemPickup;
+	int			itemPickupTime;
+	int			itemPickupBlendTime;	// the pulse around the crosshair is timed seperately
+
+	int			weaponSelectTime;
+	int			weaponAnimation;
+	int			weaponAnimationTime;
+
+	// blend blobs
+	float		damageTime;
+	float		damageX, damageY, damageValue;
+
+	// status bar head
+	float		headYaw;
+	float		headEndPitch;
+	float		headEndYaw;
+	int			headEndTime;
+	float		headStartPitch;
+	float		headStartYaw;
+	int			headStartTime;
+
+	// view movement
+	float		v_dmg_time;
+	float		v_dmg_pitch;
+	float		v_dmg_roll;
+
+	vec3_t		kick_angles;	// weapon kicks
+	vec3_t		kick_origin;
+
+	// temp working variables for player view
+	float		bobfracsin;
+	int			bobcycle;
+	float		xyspeed;
+	int     nextOrbitTime;
+
+	//qboolean cameraMode;		// if rendering from a loaded camera
+
+
+	// development tool
+	//refEntity_t		testModelEntity;
+	char			testModelName[MAX_QPATH];
+	qboolean		testGun;
+
+} cg_t;
+
+cg_t				cg;
 
 
 
+// The client game static (cgs) structure hold everything
+// loaded or calculated from the gamestate.  It will NOT
+// be cleared when a tournement restart is done, allowing
+// all clients to begin playing instantly
+typedef struct {
+	gameState_t		gameState;			// gamestate from server
+	//glconfig_t		glconfig;			// rendering configuration
+	float			screenXScale;		// derived from glconfig
+	float			screenYScale;
+	float			screenXBias;
 
+	int				serverCommandSequence;	// reliable command stream counter
+	int				processedSnapshotNum;// the number of snapshots cgame has requested
 
+	qboolean		localServer;		// detected on startup by checking sv_running
 
+	// parsed from serverinfo
+	//gametype_t		gametype;
+	int				dmflags;
+	int				teamflags;
+	int				fraglimit;
+	int				capturelimit;
+	int				timelimit;
+	int				maxclients;
+	char			mapname[MAX_QPATH];
+	char			redTeam[MAX_QPATH];
+	char			blueTeam[MAX_QPATH];
 
+	int				voteTime;
+	int				voteYes;
+	int				voteNo;
+	qboolean		voteModified;			// beep whenever changed
+	char			voteString[MAX_STRING_TOKENS];
 
+	int				teamVoteTime[2];
+	int				teamVoteYes[2];
+	int				teamVoteNo[2];
+	qboolean		teamVoteModified[2];	// beep whenever changed
+	char			teamVoteString[2][MAX_STRING_TOKENS];
 
+	int				levelStartTime;
+
+	int				scores1, scores2;		// from configstrings
+	int				redflag, blueflag;		// flag status from configstrings
+	int				flagStatus;
+
+	qboolean  newHud;
+
+	//
+	// locally derived information from gamestate
+	//
+	//qhandle_t		gameModels[MAX_MODELS];
+	//sfxHandle_t		gameSounds[MAX_SOUNDS];
+
+	int				numInlineModels;
+	//qhandle_t		inlineDrawModel[MAX_MODELS];
+	vec3_t			inlineModelMidpoints[MAX_MODELS];
+
+	clientInfo_t	clientinfo[MAX_CLIENTS];
+
+	// teamchat width is *3 because of embedded color codes
+//	char			teamChatMsgs[TEAMCHAT_HEIGHT][TEAMCHAT_WIDTH*3+1];
+//	int				teamChatMsgTimes[TEAMCHAT_HEIGHT];
+	int				teamChatPos;
+	int				teamLastChatPos;
+
+	int cursorX;
+	int cursorY;
+	qboolean eventHandling;
+	qboolean mouseCaptured;
+	qboolean sizingHud;
+	void *capturedItem;
+//	qhandle_t activeCursor;
+
+	// orders
+	int currentOrder;
+	qboolean orderPending;
+	int orderTime;
+	int currentVoiceClient;
+	int acceptOrderTime;
+	int acceptTask;
+	int acceptLeader;
+//	char acceptVoice[MAX_NAME_LENGTH];
+
+	// media
+//	cgMedia_t		media;
+
+} cgs_t;
+
+cgs_t				cgs;
 
 
 

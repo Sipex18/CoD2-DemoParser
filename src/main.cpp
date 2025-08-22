@@ -894,6 +894,271 @@ qboolean    CL_GetSnapshot( int snapshotNumber, snapshot_t *snapshot ) {
 
 
 
+
+/*
+==================
+CL_SetCGameTime
+==================
+*/
+void CL_SetCGameTime( void ) {
+	// getting a valid frame message ends the connection process
+	/*if ( cls.state != CA_ACTIVE ) {
+		if ( cls.state != CA_PRIMED ) {
+			return;
+		}
+		if ( clc.demoplaying ) {
+			// we shouldn't get the first snapshot on the same frame
+			// as the gamestate, because it causes a bad time skip
+			if ( !clc.firstDemoFrameSkipped ) {
+				clc.firstDemoFrameSkipped = qtrue;
+				return;
+			}
+			CL_ReadDemoMessage();
+		}
+		if ( cl.newSnapshots ) {
+			cl.newSnapshots = qfalse;
+			CL_FirstSnapshot();
+		}
+		if ( cls.state != CA_ACTIVE ) {
+			return;
+		}
+	}	*/
+
+	// if we have gotten to this point, cl.snap is guaranteed to be valid
+	if ( !cl.snap.valid ) {
+		Com_Error( ERR_DROP, "CL_SetCGameTime: !cl.snap.valid" );
+	}
+
+	// allow pause in single player
+	/*if ( sv_paused->integer && cl_paused->integer && com_sv_running->integer ) {
+		// paused
+		return;
+	}*/
+
+	if ( cl.snap.serverTime < cl.oldFrameServerTime ) {
+		Com_Error( ERR_DROP, "cl.snap.serverTime < cl.oldFrameServerTime" );
+	}
+	cl.oldFrameServerTime = cl.snap.serverTime;
+
+
+	// get our current view of time
+
+	/*if ( clc.demoplaying && cl_freezeDemo->integer ) {
+		// cl_freezeDemo is used to lock a demo in place for single frame advances
+
+	} else*/ {
+		// cl_timeNudge is a user adjustable cvar that allows more
+		// or less latency to be added in the interest of better 
+		// smoothness or better responsiveness.
+		int tn;
+		
+		tn = 0;//cl_timeNudge->integer;
+		if (tn<-30) {
+			tn = -30;
+		} else if (tn>30) {
+			tn = 30;
+		}
+
+		cl.serverTime = cls.realtime + cl.serverTimeDelta - tn;
+
+		// guarantee that time will never flow backwards, even if
+		// serverTimeDelta made an adjustment or cl_timeNudge was changed
+		if ( cl.serverTime < cl.oldServerTime ) {
+			cl.serverTime = cl.oldServerTime;
+		}
+		cl.oldServerTime = cl.serverTime;
+
+		// note if we are almost past the latest frame (without timeNudge),
+		// so we will try and adjust back a bit when the next snapshot arrives
+		if ( cls.realtime + cl.serverTimeDelta >= cl.snap.serverTime - 5 ) {
+			cl.extrapolatedSnapshot = qtrue;
+		}
+	}
+
+	// if we have gotten new snapshots, drift serverTimeDelta
+	// don't do this every frame, or a period of packet loss would
+	// make a huge adjustment
+	if ( cl.newSnapshots ) {
+		CL_AdjustTimeDelta();
+	}
+
+	if ( !clc.demoplaying ) {
+		return;
+	}
+
+	// if we are playing a demo back, we can just keep reading
+	// messages from the demo file until the cgame definately
+	// has valid snapshots to interpolate between
+
+	// a timedemo will always use a deterministic set of time samples
+	// no matter what speed machine it is run on,
+	// while a normal demo may have different time samples
+	// each time it is played back
+	if ( cl_timedemo->integer ) {
+		if (!clc.timeDemoStart) {
+			clc.timeDemoStart = Sys_Milliseconds();
+		}
+		clc.timeDemoFrames++;
+		cl.serverTime = clc.timeDemoBaseTime + clc.timeDemoFrames * 50;
+	}
+
+	while ( cl.serverTime >= cl.snap.serverTime ) {
+		// feed another messag, which should change
+		// the contents of cl.snap
+		CL_ReadDemoMessage();
+		if ( cls.state != CA_ACTIVE ) {
+			return;		// end of demo
+		}
+	}
+
+}
+
+#define CG_Printf Com_Printf
+#define CG_Error(err) Com_Error(ERR_DROP, err)
+
+#define trap_GetCurrentSnapshotNumber	CL_GetCurrentSnapshotNumber
+#define trap_GetSnapshot	CL_GetSnapshot
+
+
+void	CL_GetCurrentSnapshotNumber( int *snapshotNumber, int *serverTime ) {
+	*snapshotNumber = cl.snap.messageNum;
+	*serverTime = cl.snap.serverTime;
+}
+
+static snapshot_t *CG_ReadNextSnapshot( void ) {
+	qboolean	r;
+	snapshot_t	*dest;
+
+	if ( cg.latestSnapshotNum > cgs.processedSnapshotNum + 1000 ) {
+		CG_Printf( "WARNING: CG_ReadNextSnapshot: way out of range, %i > %i", 
+			cg.latestSnapshotNum, cgs.processedSnapshotNum );
+	}
+
+	while ( cgs.processedSnapshotNum < cg.latestSnapshotNum ) {
+		// decide which of the two slots to load it into
+		if ( cg.snap == &cg.activeSnapshots[0] ) {
+			dest = &cg.activeSnapshots[1];
+		} else {
+			dest = &cg.activeSnapshots[0];
+		}
+
+		// try to read the snapshot from the client system
+		cgs.processedSnapshotNum++;
+		r = trap_GetSnapshot( cgs.processedSnapshotNum, dest );
+
+		// FIXME: why would trap_GetSnapshot return a snapshot with the same server time
+		if ( cg.snap && r && dest->serverTime == cg.snap->serverTime ) {
+			//continue;
+		}
+
+		// if it succeeded, return
+		if ( r ) {
+			//CG_AddLagometerSnapshotInfo( dest );
+			return dest;
+		}
+
+		// a GetSnapshot will return failure if the snapshot
+		// never arrived, or  is so old that its entities
+		// have been shoved off the end of the circular
+		// buffer in the client system.
+
+		// record as a dropped packet
+		//CG_AddLagometerSnapshotInfo( NULL );
+
+		// If there are additional snapshots, continue trying to
+		// read them.
+	}
+
+	// nothing left to read
+	return NULL;
+}
+
+void CG_ProcessSnapshots( void ) {
+	snapshot_t		*snap;
+	int				n;
+
+	// see what the latest snapshot the client system has is
+	trap_GetCurrentSnapshotNumber( &n, &cg.latestSnapshotTime );
+	if ( n != cg.latestSnapshotNum ) {
+		if ( n < cg.latestSnapshotNum ) {
+			// this should never happen
+			CG_Error( "CG_ProcessSnapshots: n < cg.latestSnapshotNum" );
+		}
+		cg.latestSnapshotNum = n;
+	}
+
+	// If we have yet to receive a snapshot, check for it.
+	// Once we have gotten the first snapshot, cg.snap will
+	// always have valid data for the rest of the game
+	while ( !cg.snap ) {
+		snap = CG_ReadNextSnapshot();
+		if ( !snap ) {
+			// we can't continue until we get a snapshot
+			return;
+		}
+
+		// set our weapon selection to what
+		// the playerstate is currently using
+		if ( !( snap->snapFlags & SNAPFLAG_NOT_ACTIVE ) ) {
+			CG_SetInitialSnapshot( snap );
+		}
+	}
+
+	// loop until we either have a valid nextSnap with a serverTime
+	// greater than cg.time to interpolate towards, or we run
+	// out of available snapshots
+	do {
+		// if we don't have a nextframe, try and read a new one in
+		if ( !cg.nextSnap ) {
+			snap = CG_ReadNextSnapshot();
+
+			// if we still don't have a nextframe, we will just have to
+			// extrapolate
+			if ( !snap ) {
+				break;
+			}
+
+			CG_SetNextSnap( snap );
+
+
+			// if time went backwards, we have a level restart
+			if ( cg.nextSnap->serverTime < cg.snap->serverTime ) {
+				CG_Error( "CG_ProcessSnapshots: Server time went backwards" );
+			}
+		}
+
+		// if our time is < nextFrame's, we have a nice interpolating state
+		if ( cg.time >= cg.snap->serverTime && cg.time < cg.nextSnap->serverTime ) {
+			break;
+		}
+
+		// we have passed the transition from nextFrame to frame
+		CG_TransitionSnapshot();
+	} while ( 1 );
+
+	// assert our valid conditions upon exiting
+	if ( cg.snap == NULL ) {
+		CG_Error( "CG_ProcessSnapshots: cg.snap == NULL" );
+	}
+	if ( cg.time < cg.snap->serverTime ) {
+		// this can happen right after a vid_restart
+		cg.time = cg.snap->serverTime;
+	}
+	if ( cg.nextSnap != NULL && cg.nextSnap->serverTime <= cg.time ) {
+		CG_Error( "CG_ProcessSnapshots: cg.nextSnap->serverTime <= cg.time" );
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
 float MSG_ReadAngle16(msg_t* msg)
 {
 	return SHORT2ANGLE((float)MSG_ReadShort(msg));
