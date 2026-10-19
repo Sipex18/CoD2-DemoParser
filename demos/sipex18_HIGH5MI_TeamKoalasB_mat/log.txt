@@ -1,0 +1,477 @@
+    configstring[0]: \_Admin\SUNSPINX\_Email\info@fpschallenge.eu\_match_info\Round 0 | MR12 Ready-up\_match_score\-\_match_team1\HIGH5 MIX\_match_team2\Team KoalasBear\_Website\www.fpschallenge.eu\_zpam\4.08\g_antilag\0\g_gametype\sd\gamename\Call of Duty 2\mapname\mp_matmata_fix\protocol\120\shortversion\1.4.6.8\sv_allowAnonymous\0\sv_floodProtect\1\sv_hostname\COD2 ^5Match ^7server @ ^5FPS^7Challenge^5.^7eu\sv_maxclients\14\sv_maxPing\0\sv_maxRate\25000\sv_minPing\0\sv_privateClients\0\sv_punkbuster\0\sv_pure\1\sv_voice\0
+    configstring[1]: \bg_fallDamageMaxHeight\480\bg_fallDamageMinHeight\256\g_cod2x\6\g_competitive\1\g_synchronousClients\0\sv_cheats\0\sv_disableClientConsole\0\sv_iwdNames\zzz_zpam_custom_fpschallenge_smoke2 zpam_maps_v7 zpam408 mp_wawa_3daim iw_CoD2x_01 iw_15 iw_14 iw_13 iw_12 iw_11 iw_10 iw_09 iw_08 iw_07 iw_06 iw_05 iw_04 iw_03 iw_02 iw_01 iw_00\sv_iwds\861007687 -111826896 185657285 -1704821757 -489017985 181429573 -1449716526 780394069 -1333623355 -1980843666 1334775335 -621896007 1101180720 1046874969 1053665859 1842349204 -1652414412 1659111092 -1085686032 -2025394354 178615151 \sv_pure\1\sv_referencedIwdNames\main/zzz_zpam_custom_fpschallenge_smoke2 main/zpam_maps_v7 main/zpam408 main/iw_15 main/iw_13 main/iw_08 main/iw_07 main/iw_06\sv_referencedIwds\861007687 -111826896 185657285 181429573 780394069 1101180720 1046874969 1053665859 \sv_serverid\71\sv_voice\0\sv_voiceQuality\1\timescale\1
+    configstring[2]: cod
+    configstring[7]: defaultweapon_mp 30cal_stand_mp mg42_bipod_stand_mp sten_mp enfield_mp m1garand_mp enfield_scope_mp thompson_mp bren_mp bren_buffed_mp frag_grenade_british_mp c_smoke_grenade_british_mp webley_mp mp40_mp kar98k_mp g43_mp kar98k_sniper_mp mp44_mp fg42_mp frag_grenade_german_mp c_smoke_grenade_german_mp luger_mp shotgun_mp binoculars_mp
+    configstring[8]: ffffff100000000000000000000000000
+    configstring[11]: 0
+    configstring[12]: 0
+    configstring[13]: 2246058
+    configstring[22]: \winner\0
+    configstring[23]: hud_status_dead
+    configstring[24]: hud_status_connecting
+    configstring[25]: compassping_enemyfiring
+    configstring[26]: icon_mod
+    configstring[27]: party_ready
+    configstring[28]: party_notready
+    configstring[31]: talkingicon
+    configstring[32]: headicon_british
+    configstring[33]: headicon_german
+    configstring[142]: bg_aimSpreadMoveSpeedThreshold
+    configstring[143]: bg_bobAmplitudeDucked
+    configstring[144]: bg_bobAmplitudeProne
+    configstring[145]: bg_bobAmplitudeStanding
+    configstring[146]: bg_bobMax
+    configstring[147]: bg_fallDamageMaxHeight
+    configstring[148]: bg_fallDamageMinHeight
+    configstring[149]: bg_foliagesnd_fastinterval
+    configstring[150]: bg_foliagesnd_maxspeed
+    configstring[151]: bg_foliagesnd_minspeed
+    configstring[152]: bg_foliagesnd_resetinterval
+    configstring[153]: bg_foliagesnd_slowinterval
+    configstring[154]: bg_ladder_yawcap
+    configstring[155]: bg_prone_yawcap
+    configstring[156]: friction
+    configstring[157]: g_ScoresBanner_Allies
+    configstring[158]: g_ScoresBanner_Axis
+    configstring[159]: g_ScoresBanner_None
+    configstring[160]: g_ScoresBanner_Spectators
+    configstring[161]: g_TeamColor_Allies
+    configstring[162]: g_TeamColor_Axis
+    configstring[163]: g_TeamName_Allies
+    configstring[164]: g_TeamName_Axis
+    configstring[165]: inertiaAngle
+    configstring[166]: inertiaDebug
+    configstring[167]: inertiaMax
+    configstring[168]: jump_height
+    configstring[169]: jump_ladderPushVel
+    configstring[170]: jump_slowdownEnable
+    configstring[171]: jump_spreadAdd
+    configstring[172]: jump_stepSize
+    configstring[173]: mantle_check_angle
+    configstring[174]: mantle_check_radius
+    configstring[175]: mantle_check_range
+    configstring[176]: mantle_debug
+    configstring[177]: mantle_enable
+    configstring[178]: mantle_view_yawcap
+    configstring[179]: player_adsExitDelay
+    configstring[180]: player_backSpeedScale
+    configstring[181]: player_breath_fire_delay
+    configstring[182]: player_breath_gasp_lerp
+    configstring[183]: player_breath_gasp_scale
+    configstring[184]: player_breath_gasp_time
+    configstring[185]: player_breath_hold_lerp
+    configstring[186]: player_breath_hold_time
+    configstring[187]: player_breath_snd_delay
+    configstring[188]: player_breath_snd_lerp
+    configstring[189]: player_dmgtimer_flinchTime
+    configstring[190]: player_dmgtimer_maxTime
+    configstring[191]: player_dmgtimer_minScale
+    configstring[192]: player_dmgtimer_stumbleTime
+    configstring[193]: player_dmgtimer_timePerPoint
+    configstring[194]: player_footstepsThreshhold
+    configstring[195]: player_moveThreshhold
+    configstring[196]: player_scopeExitOnDamage
+    configstring[197]: player_spectateSpeedScale
+    configstring[198]: player_strafeSpeedScale
+    configstring[199]: player_toggleBinoculars
+    configstring[200]: player_turnAnims
+    configstring[201]: player_view_pitch_down
+    configstring[202]: player_view_pitch_up
+    configstring[203]: stopspeed
+    configstring[238]: 11
+    configstring[239]: 0.0075
+    configstring[240]: 0.03
+    configstring[241]: 0.007
+    configstring[242]: 8
+    configstring[243]: 480
+    configstring[244]: 256
+    configstring[245]: 500
+    configstring[246]: 180
+    configstring[247]: 40
+    configstring[248]: 500
+    configstring[249]: 1500
+    configstring[250]: 100
+    configstring[251]: 85
+    configstring[252]: 5.5
+    configstring[253]: mpflag_british
+    configstring[254]: mpflag_german
+    configstring[255]: mpflag_spectator
+    configstring[256]: mpflag_spectator
+    configstring[257]: 0.25098 0.25098 0.74902 0
+    configstring[258]: 0.6 0.6 0.6 0
+    configstring[259]: MPUI_BRITISH
+    configstring[260]: MPUI_GERMAN
+    configstring[261]: 0
+    configstring[262]: 0
+    configstring[263]: 50
+    configstring[264]: 39
+    configstring[265]: 128
+    configstring[266]: 1
+    configstring[267]: 64
+    configstring[268]: 18
+    configstring[269]: 60
+    configstring[270]: 0.1
+    configstring[271]: 20
+    configstring[272]: 0
+    configstring[273]: 1
+    configstring[274]: 60
+    configstring[275]: 0
+    configstring[276]: 0.7
+    configstring[277]: 0
+    configstring[278]: 6
+    configstring[279]: 4.5
+    configstring[280]: 1
+    configstring[281]: 4
+    configstring[282]: 4.5
+    configstring[283]: 1
+    configstring[284]: 2
+    configstring[285]: 500
+    configstring[286]: 750
+    configstring[287]: 0
+    configstring[288]: 500
+    configstring[289]: 100
+    configstring[290]: 0
+    configstring[291]: 10
+    configstring[292]: 0
+    configstring[293]: 2
+    configstring[294]: 0.8
+    configstring[295]: 1
+    configstring[296]: 0
+    configstring[297]: 85
+    configstring[298]: 85
+    configstring[299]: 100
+    configstring[335]: xmodel/defaultweapon
+    configstring[336]: xmodel/awning_desert_market_large2
+    configstring[337]: xmodel/awning_desert_wood1
+    configstring[338]: xmodel/prop_doorknob1
+    configstring[339]: xmodel/awning_desert_wood_long
+    configstring[340]: xmodel/awning_2x4-5_1
+    configstring[341]: xmodel/awning_2x4-5_3
+    configstring[342]: xmodel/military_dragonstooth_egypt
+    configstring[343]: xmodel/awning_desert_wood4
+    configstring[344]: xmodel/awning_desert_market_medium1
+    configstring[345]: xmodel/brush_desertspikeyshrub
+    configstring[346]: xmodel/brush_desertgreenfanshrub
+    configstring[347]: xmodel/brush_desertshrubgroup01
+    configstring[348]: xmodel/brush_toujanebigbushy
+    configstring[349]: xmodel/prop_market_stands1
+    configstring[350]: xmodel/prop_wickerbasket8
+    configstring[351]: xmodel/prop_wickerbasket3
+    configstring[352]: xmodel/prop_wickerbasket5
+    configstring[353]: xmodel/prop_wickerbasket7
+    configstring[354]: xmodel/prop_crate_dak5
+    configstring[355]: xmodel/prop_crate_dak6
+    configstring[356]: xmodel/prop_crate_dak8
+    configstring[357]: xmodel/prop_crate_dak7
+    configstring[358]: xmodel/prop_crate_dak9
+    configstring[359]: xmodel/military_sandbag_single_flat
+    configstring[360]: xmodel/prop_barrel_silver
+    configstring[361]: xmodel/prop_haybale
+    configstring[362]: xmodel/prop_wooden_barrel1
+    configstring[363]: xmodel/brush_desertshrubbrowntall
+    configstring[364]: xmodel/tree_desertpalm01
+    configstring[365]: xmodel/tree_desertpalm02
+    configstring[366]: xmodel/dome_07
+    configstring[367]: xmodel/tree_desertbushy
+    configstring[368]: xmodel/brush_egypt_desert_1
+    configstring[369]: xmodel/brush_egypt_desert_2
+    configstring[370]: xmodel/prop_crate_dak4
+    configstring[371]: xmodel/prop_market_stands5
+    configstring[372]: xmodel/haycart
+    configstring[373]: xmodel/vehicle_opel_blitz_desert_static
+    configstring[374]: xmodel/tree_desertpalm03
+    configstring[375]: xmodel/prop_wickerbasket2
+    configstring[376]: xmodel/caen_barbedwire_4
+    configstring[377]: xmodel/egypt_prop_well1
+    configstring[378]: xmodel/prop_market_stands6
+    configstring[379]: xmodel/weapon_30cal
+    configstring[380]: xmodel/vehicle_panzer_ii_static
+    configstring[381]: xmodel/vehicle_africa_jeep_static
+    configstring[382]: xmodel/caen_barbedwire_3
+    configstring[383]: xmodel/dome_08
+    configstring[384]: xmodel/german_artillery_flak88_aa_d_static
+    configstring[385]: xmodel/german_artillery_flak88_aa_static
+    configstring[386]: xmodel/fx
+    configstring[387]: xmodel/prop_crate_dak3
+    configstring[388]: xmodel/prop_crate_dak1
+    configstring[389]: xmodel/prop_crate_dak2
+    configstring[390]: xmodel/military_sandbag_shortsection
+    configstring[391]: xmodel/military_sandbag_endsection_left
+    configstring[392]: xmodel/military_sandbag_endsection_right
+    configstring[393]: xmodel/german_artillery_flak88_destroy
+    configstring[394]: xmodel/german_artillery_flak88
+    configstring[395]: xmodel/prop_metal_pail1
+    configstring[396]: xmodel/weapon_mg42
+    configstring[397]: xmodel/prop_flag_american
+    configstring[398]: xmodel/prop_flag_german
+    configstring[399]: xmodel/military_flak88_boxlid
+    configstring[400]: xmodel/military_sandbag_curvedsection
+    configstring[401]: xmodel/military_sandbag_single_bent
+    configstring[402]: xmodel/mp_tntbomb
+    configstring[403]: xmodel/mp_tntbomb_obj
+    configstring[404]: xmodel/weapon_sten
+    configstring[405]: xmodel/weapon_enfield
+    configstring[406]: xmodel/weapon_m1garand
+    configstring[407]: xmodel/weapon_enfield_scope
+    configstring[408]: xmodel/weapon_thompson
+    configstring[409]: xmodel/weapon_bren
+    configstring[410]: xmodel/weapon_mk1grenade
+    configstring[411]: xmodel/projectile_BritishGrenade
+    configstring[412]: xmodel/weapon_us_smoke_grenade
+    configstring[413]: xmodel/projectile_us_smoke_grenade
+    configstring[414]: xmodel/weapon_webley
+    configstring[415]: xmodel/weapon_MP40
+    configstring[416]: xmodel/weapon_kAr98
+    configstring[417]: xmodel/weapon_g43
+    configstring[418]: xmodel/weapon_kar98_scoped
+    configstring[419]: xmodel/weapon_mp44
+    configstring[420]: xmodel/weapon_temp_fg42earlynsc
+    configstring[421]: xmodel/weapon_nebelhandgrenate
+    configstring[422]: xmodel/projectile_GermanGrenade
+    configstring[423]: xmodel/weapon_luger
+    configstring[424]: xmodel/weapon_trenchgun
+    configstring[425]: xmodel/playerbody_british_africa01
+    configstring[426]: xmodel/playerbody_british_africa02
+    configstring[427]: xmodel/head_british_boon
+    configstring[428]: xmodel/helmet_british_afrca
+    configstring[429]: xmodel/viewmodel_hands_british_bare
+    configstring[430]: xmodel/head_british_chance
+    configstring[431]: xmodel/head_british_joel
+    configstring[432]: xmodel/playerbody_british_africa03
+    configstring[433]: xmodel/head_british_macgregor
+    configstring[434]: xmodel/head_british_paul
+    configstring[435]: xmodel/playerbody_german_africa01
+    configstring[436]: xmodel/head_german_afrca_christoph
+    configstring[437]: xmodel/head_german_afrca_eric
+    configstring[438]: xmodel/head_german_afrca_josh
+    configstring[439]: xmodel/helmet_german_africa
+    configstring[591]: weap_cal30_loop
+    configstring[592]: weap_cal30_loop_plr
+    configstring[593]: weap_cal30_cooldown
+    configstring[594]: weap_cal30_cooldown_plr
+    configstring[595]: weap_mg42_loop
+    configstring[596]: weap_mg42_loop_plr
+    configstring[597]: weap_mg42_cooldown
+    configstring[598]: weap_mg42_cooldown_plr
+    configstring[599]: zpam_weap_raise
+    configstring[600]: MP_hit_alert
+    configstring[601]: breathing_hurt
+    configstring[602]: breathing_better
+    configstring[603]: US_0_order_move_generic_05
+    configstring[604]: hill400_assault_gr5_letsgoget
+    configstring[847]: fx/explosions/flak88_explosion.efx
+    configstring[848]: fx/dust/dust_wind_brown_thick.efx
+    configstring[849]: fx/props/barrelexp.efx
+    configstring[850]: fx/impacts/large_metalhit.efx
+    configstring[1167]: default
+    configstring[1246]: moddownload
+    configstring[1247]: ingame
+    configstring[1248]: matchinfo
+    configstring[1249]: team_britishgerman
+    configstring[1250]: weapon_british
+    configstring[1251]: weapon_german
+    configstring[1252]: weapon_rifles
+    configstring[1253]: serverinfo_sd
+    configstring[1254]: callvote
+    configstring[1255]: exec_cmd
+    configstring[1256]: quickcommands
+    configstring[1257]: quickstatements
+    configstring[1258]: quickresponses
+    configstring[1259]: quicksettings
+    configstring[1260]: mousesettings
+    configstring[1261]: scoreboard_sd
+    configstring[1262]: streamersystem
+    configstring[1263]: strat_records
+    configstring[1278]: PLATFORM_HOLD_TO_USE
+    configstring[1279]: PLATFORM_HOLD_TO_DROP
+    configstring[1280]: Switch a mode by holding (Shift).
+    configstring[1311]: Error: zPAM is not installed correctly.
+    configstring[1312]: This version of pam is only for testing! Dont steal!
+    configstring[1313]: Cvar /fs_game is not empty!)
+    configstring[1314]: Iwd file ^9zpam408.iwd^7 must be installed in ^9main^7 folder.
+    configstring[1315]: Error while getting loaded iwd files. Make sure iwd files does not contains spaces.
+    configstring[1316]: Iwd file ^9zpam_maps_v7.iwd^7 does not exists in ^9main^7 folder
+    configstring[1317]: Error while checking if fixed maps exists. Map printed above was not found on server.
+    configstring[1318]: WWW downloading must be enabled. Set ^9sv_wwwDownload^7 and ^9sv_wwwBaseURL
+    configstring[1319]: Old zPAM or maps detected in ^9main^7 folder. Delete iwd file you see printed above.
+    configstring[1320]: Rename iwd file ^9zzz_zpam_custom.iwd^7 to something unique (e.g. ^9zzz_zpam_custom_fpschallange_v1.iwd^7).
+    configstring[1321]: Old CoD2x version detected. Please update CoD2x version.
+    configstring[1322]: https://github.com/eyza-cod2/zpam3
+    configstring[1323]: Please visit ^9https://github.com/eyza-cod2/zpam3 ^7for install instructions.
+    configstring[1324]: Search and Destroy
+    configstring[1325]: MR12
+    configstring[1326]: EU | ^3Custom
+    configstring[1327]:  
+    configstring[1328]: MP_MATCHSTARTING
+    configstring[1329]: MP_MATCHRESUMING
+    configstring[1330]: MP_EXPLOSIVESPLANTED
+    configstring[1331]: MP_EXPLOSIVESDEFUSED
+    configstring[1332]: MP_ROUNDDRAW
+    configstring[1333]: MP_TIMEHASEXPIRED
+    configstring[1334]: MP_ALLIEDMISSIONACCOMPLISHED
+    configstring[1335]: MP_AXISMISSIONACCOMPLISHED
+    configstring[1336]: MP_ALLIESHAVEBEENELIMINATED
+    configstring[1337]: MP_AXISHAVEBEENELIMINATED
+    configstring[1338]: PLATFORM_HOLD_TO_PLANT_EXPLOSIVES
+    configstring[1339]: PLATFORM_HOLD_TO_DEFUSE_EXPLOSIVES
+    configstring[1340]: Round
+    configstring[1341]: Starting
+    configstring[1342]: First Round
+    configstring[1343]: Last round before half
+    configstring[1344]: Last round
+    configstring[1345]: Strat Time
+    configstring[1346]: zPAM 4.08
+    configstring[1347]: You must download zPAM mod to play on this server.
+    configstring[1348]: Downloading was enabled (/cl_allowDownload 1).
+    configstring[1349]: Please reconnect to the server.
+    configstring[1350]: MP_KILLCAM
+    configstring[1351]: PLATFORM_PRESS_TO_SKIP
+    configstring[1352]: PLATFORM_PRESS_TO_RESPAWN
+    configstring[1353]: assist
+    configstring[1354]: Going to Over-time
+    configstring[1355]: Half-time
+    configstring[1356]: Team Auto-Switching
+    configstring[1357]: Allies Win!
+    configstring[1358]: Axis Win!
+    configstring[1359]: Its a TIE!
+    configstring[1360]: Going to Scoreboard
+    configstring[1361]: Waiting on
+    configstring[1362]: Players
+    configstring[1363]: Missing Players
+    configstring[1364]: Mixed Players
+    configstring[1365]: Unjoined Players
+    configstring[1366]: Misnamed Players
+    configstring[1367]: Your Status
+    configstring[1368]: Ready
+    configstring[1369]: Not Ready
+    configstring[1370]: Clock
+    configstring[1371]: Ready-Up Mode
+    configstring[1372]: Half-Time Ready-Up Mode
+    configstring[1373]: Time-Out Ready-Up Mode
+    configstring[1374]: Overtime Ready-Up Mode
+    configstring[1375]: Select team!
+    configstring[1376]: Resuming In
+    configstring[1377]: Disabled
+    configstring[1378]: Enabled
+    configstring[1379]: Killing
+    configstring[1380]: Aim Trainer
+    configstring[1381]: Not supported
+    configstring[1382]: Available
+    configstring[1383]: Active
+    configstring[1384]: -
+    configstring[1385]: Match begins in:
+    configstring[1386]: Match continues in:
+    configstring[1387]: Match resumes in:
+    configstring[1388]: Time is over. Setting one team ready will skip the Ready-up.
+    configstring[1389]: Time-out
+    configstring[1390]: Going to Time-out
+    configstring[1391]: Going to Time-out in
+    configstring[1392]: Pistol bash
+    configstring[1393]: Blackout Protection
+    configstring[1394]: You see this map background because match is in progress.
+    configstring[1395]: Recording will start automatically...
+    configstring[1396]: Allies Left
+    configstring[1397]: Axis Left
+    configstring[1398]: Allies Eliminated
+    configstring[1399]: Axis Eliminated
+    configstring[1400]: Auto-spectating
+    configstring[1401]: Auto-spectating off
+    configstring[1402]: Manual change
+    configstring[1403]: Enemy in sight
+    configstring[1404]: Spotted by enemy
+    configstring[1405]: Enemy in sight (P)
+    configstring[1406]: Spotted by enemy (P)
+    configstring[1407]: Bomb planted
+    configstring[1408]: Follow losing team
+    configstring[1409]: Last player in team
+    configstring[1410]: 1v1 losing team
+    configstring[1411]: Next to each other
+    configstring[1412]: Follow moving player
+    configstring[1413]: Radio defending team
+    configstring[1414]: Press ^3[{+attack}]^7 to open streamer menu
+    configstring[1415]: Press ^3[ESC]^7 to close streamer menu
+(binds are not working when streamer menu is opened)
+    configstring[1416]: <
+    configstring[1417]: >
+    configstring[1418]: &&1 hp
+    configstring[1419]: Head
+    configstring[1420]: Neck
+    configstring[1421]: Torso
+    configstring[1422]: Torso-up
+    configstring[1423]: Torso-low
+    configstring[1424]: Shoulder
+    configstring[1425]: Arm
+    configstring[1426]: Hand
+    configstring[1427]: Leg
+    configstring[1428]: Leg-up
+    configstring[1429]: Leg-low
+    configstring[1430]: Foot
+    configstring[1431]: Grenade
+    configstring[1432]: 1 pellet
+    configstring[1433]: 2 pellets
+    configstring[1434]: 3 pellets
+    configstring[1435]: 4 pellets
+    configstring[1436]: 5 pellets
+    configstring[1437]: 6 pellets
+    configstring[1438]: 7 pellets
+    configstring[1439]: 8 pellets
+    configstring[1440]: Range 1   (1 pellet needed for kill)
+    configstring[1441]: Range 1   (2 pellets needed for kill (body not visible)
+    configstring[1442]: Range 2   (2 pellets needed for kill)
+    configstring[1443]: Range 3   (3 pellets needed for kill)
+    configstring[1444]: Range 4   (linear damage)
+    configstring[1445]: Torso hitbox fix applied
+    configstring[1446]: Hand hitbox fix applied
+    configstring[1447]: Press ^3[F]^7 to replay ^2multi-kill ^7 of:
+    configstring[1448]: Press ^3[F]^7 to replay ^22 kills ^7 of:
+    configstring[1449]: Press ^3[F]^7 to replay ^23 kills ^7 of:
+    configstring[1450]: Press ^3[F]^7 to replay ^24 kills ^7 of:
+    configstring[1451]: Press ^3[F]^7 to replay ^25 kills ^7 of:
+    configstring[1452]: Press ^3[F]^7 to replay ^2nozoom ^7 of:
+    configstring[1453]: Press ^3[F]^7 to replay ^2bash ^7 of:
+    configstring[1454]: Streamer killcam replay
+    configstring[1455]: Press ^2FIRE^7 to vote                           Votes
+    configstring[1456]: Time Left: 
+    configstring[1457]: Next Map Vote
+    configstring[1458]: MP_AMERICAN
+    configstring[1459]: MP_BRITISH
+    configstring[1460]: MP_RUSSIAN
+    configstring[1461]: MP_SLASH
+    configstring[1567]: black
+    configstring[1568]: white
+    configstring[1569]: $levelbriefing
+    configstring[1570]: hudstopwatch
+    configstring[1571]: hudstopwatchneedle
+    configstring[1572]: plantbomb
+    configstring[1573]: defusebomb
+    configstring[1574]: objective
+    configstring[1575]: objectivea
+    configstring[1576]: objectiveb
+    configstring[1577]: bombplanted
+    configstring[1578]: objpoint_bomb
+    configstring[1579]: objpoint_a
+    configstring[1580]: objpoint_b
+    configstring[1581]: objpoint_star
+    configstring[1582]: damage_feedback
+    configstring[1583]: overlay_low_health
+    configstring[1584]: objpoint_default
+    configstring[1585]: stance_stand_front
+    configstring[1586]: stance_stand_back
+    configstring[1587]: stance_stand_left
+    configstring[1588]: stance_stand_right
+    configstring[1589]: stance_crouch_front
+    configstring[1590]: stance_crouch_back
+    configstring[1591]: stance_crouch_left
+    configstring[1592]: stance_crouch_right
+    configstring[1593]: stance_prone_front
+    configstring[1594]: stance_prone_back
+    configstring[1595]: stance_prone_left
+    configstring[1596]: stance_prone_right
+    configstring[1597]: headicon_dead
+    configstring[1598]: mpflag_british
+    configstring[1599]: mpflag_german
+    configstring[1600]: mpflag_spectator
+    configstring[1601]: hudicon_british
+    configstring[1602]: hudicon_german
+=== demo: sipex18_HIGH5MI_TeamKoalasB_mat.dm_1 ===
+map: mp_matmata_fix, gametype: sd, hostname: COD2 ^5Match ^7server @ ^5FPS^7Challenge^5.^7eu, protocol: 120, version: 1.4.6.8

@@ -1,0 +1,26 @@
+{
+  "chat": [
+    {"t": 2545536, "round": 0, "type": "all", "team": "allies", "name": "H5M n e s q", "dead": false, "color": "^7", "text": "széles utakat"},
+    {"t": 2548440, "round": 0, "type": "all", "team": "axis", "name": "KOALAS Ni3", "dead": false, "color": "^7", "text": "^2:^7DDDDDDDDDDdddd"},
+    {"t": 2582961, "round": 1, "type": "all", "team": "axis", "name": "KOALAS Remegokez", "dead": false, "color": "^7", "text": " Ne melegitsd a kezét ^1c ^7G4box"},
+    {"t": 2749683, "round": 3, "type": "team", "team": "allies", "name": "H5M fasirtgechi", "dead": true, "color": "^5", "text": "kezdö doboz 100 százalék"},
+    {"t": 2775357, "round": 3, "type": "all", "team": "axis", "name": "KOALAS dNNN", "dead": true, "color": "^7", "text": "ne hívjál nyomi"},
+    {"t": 2777571, "round": 4, "type": "all", "team": "allies", "name": "H5M fasirtgechi", "dead": false, "color": "^7", "text": "XD"},
+    {"t": 2822715, "round": 4, "type": "all", "team": "axis", "name": "KOALAS Remegokez", "dead": true, "color": "^7", "text": "km re vagyok és szar a naded"},
+    {"t": 2825850, "round": 4, "type": "all", "team": "axis", "name": "KOALAS Ni3", "dead": true, "color": "^7", "text": "^2:^7DDDDDDDDDDdddd"},
+    {"t": 2830407, "round": 5, "type": "all", "team": "allies", "name": "H5M hajduk", "dead": false, "color": "^7", "text": "jó a pam"},
+    {"t": 2863242, "round": 5, "type": "team", "team": "allies", "name": "H5M eyva.", "dead": true, "color": "^5", "text": "jeeptől"},
+    {"t": 2864925, "round": 5, "type": "team", "team": "allies", "name": "H5M eyva.", "dead": true, "color": "^5", "text": "dobd a nadet"},
+    {"t": 2866743, "round": 6, "type": "team", "team": "allies", "name": "H5M eyva.", "dead": false, "color": "^5", "text": "FASIRT"},
+    {"t": 3184116, "round": 10, "type": "team", "team": "allies", "name": "H5M fasirtgechi", "dead": true, "color": "^5", "text": "xd"},
+    {"t": 3248769, "round": 12, "type": "all", "team": "axis", "name": "KOALAS Remegokez", "dead": false, "color": "^7", "text": " csumpedli ^4:D"},
+    {"t": 3478725, "round": 15, "type": "all", "team": "allies", "name": "KOALAS Remegokez", "dead": false, "color": "^7", "text": "^6:) "},
+    {"t": 3560139, "round": 16, "type": "all", "team": "allies", "name": "KOALAS Remegokez", "dead": true, "color": "^7", "text": "anyad"},
+    {"t": 3562251, "round": 16, "type": "all", "team": "allies", "name": "KOALAS Remegokez", "dead": true, "color": "^7", "text": "xd"},
+    {"t": 3562746, "round": 16, "type": "all", "team": "axis", "name": "H5M fasirtgechi", "dead": false, "color": "^7", "text": "^0:^7DDDDDDDDDDDD"},
+    {"t": 3563274, "round": 16, "type": "all", "team": "axis", "name": "H5M n e s q", "dead": false, "color": "^7", "text": "^5:^1DDDDDdd"},
+    {"t": 3823260, "round": 20, "type": "all", "team": "axis", "name": "H5M n e s q", "dead": true, "color": "^7", "text": "gg"},
+    {"t": 3824316, "round": 20, "type": "all", "team": "axis", "name": "H5M eyva.", "dead": false, "color": "^7", "text": "^8DDDDDDDDDDDDdddddddddddddd"},
+    {"t": 3824976, "round": 20, "type": "all", "team": "allies", "name": "KOALAS dudeee.", "dead": true, "color": "^7", "text": "gg"}
+  ]
+}

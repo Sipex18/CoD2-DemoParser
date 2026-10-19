@@ -1,0 +1,14 @@
+{
+  "players": {
+    "0": {"name": "KOALAS csoves", "team": "allies", "file": "00_KOALAS_csoves.json"},
+    "1": {"name": "^6H^55^7M fasirtgechi", "team": "axis", "file": "01_H5M_fasirtgechi.json"},
+    "2": {"name": "^6H^55^7M n e s q", "team": "axis", "file": "02_H5M_n_e_s_q.json"},
+    "3": {"name": "^9KOALAS ^7dudeee^6.", "team": "allies", "file": "03_KOALAS_dudeee.json"},
+    "4": {"name": "^3KOALAS^7 Ni3Ł†", "team": "allies", "file": "04_KOALAS_Ni3.json"},
+    "5": {"name": "^6H^55^7M hajduk", "team": "axis", "file": "05_H5M_hajduk.json"},
+    "7": {"name": "^8KOALAS ^7dNNN", "team": "allies", "file": "07_KOALAS_dNNN.json"},
+    "8": {"name": "^6H^55^7M sonic", "team": "axis", "file": "08_H5M_sonic.json"},
+    "9": {"name": "^6KOALAS ^7Remegokez", "team": "allies", "file": "09_KOALAS_Remegokez.json"},
+    "6": {"name": "^6H^55^7M eyva^6.", "team": "axis", "file": "../pov.json", "pov": true}
+  }
+}

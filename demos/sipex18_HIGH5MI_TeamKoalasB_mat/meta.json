@@ -1,0 +1,26 @@
+{
+  "demo": "sipex18_HIGH5MI_TeamKoalasB_mat.dm_1",
+  "map": "mp_matmata_fix",
+  "gametype": "sd",
+  "hostname": "COD2 ^5Match ^7server @ ^5FPS^7Challenge^5.^7eu",
+  "protocol": "120",
+  "version": "1.4.6.8",
+  "zpam": "4.08",
+  "maxclients": 14,
+  "clientNum": 6,
+  "recorder": "^6H^55^7M eyva^6.",
+  "matchTeam1": "HIGH5 MIX",
+  "matchTeam2": "Team KoalasBear",
+  "firstServerTime": 2540223,
+  "lastServerTime": 3829794,
+  "durationMs": 1289571,
+  "snapshots": 38662,
+  "files": {
+    "match.json": {"rounds": 22, "events": 614, "kills": 138, "grenades": 238},
+    "chat.json": 22,
+    "pov.json": 38662,
+    "scoreboard.json": 10,
+    "players/": 10
+  },
+  "note": "fov not recorded in demos (client-side dvar); player pitch/roll limited by game"
+}
